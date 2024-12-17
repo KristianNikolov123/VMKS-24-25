@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '' });
+  const navigate = useNavigate();
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email format check
@@ -41,7 +44,7 @@ function SignIn() {
     } else {
       setErrors({ email: '', password: '' });
       console.log('Form submitted successfully:', { email, password });
-      alert('Sign In Successful!');
+      navigate('/products');
     }
   };
 
