@@ -20,27 +20,26 @@ function SignIn() {
     e.preventDefault();
 
     let emailError = '';
-    let passwordError1 = '';
-    let passwordError2 = '';
-    let passwordError3 = '';
+    let passwordError = '';
 
     if (!validateEmail(email)) {
       emailError = 'Please enter a valid email address.';
     }
 
     if (!validatePassword(password)) {
-      passwordError1 =
-        '- Password must be at least 8 characters'
-      passwordError2 =  
-        '- include one uppercase letter' 
-      passwordError3 =
-       '- one special character'  
+      passwordError = (
+        <div className="text-red-500">
+          <br />- At least 8 characters long
+          <br />- Include one uppercase letter
+          <br />- Include one special character
+        </div>
+      );
     }
 
-    if ( passwordError1 || passwordError2 || passwordError3 ) {
-      setErrors({ password: passwordError1 });
+    if (emailError || passwordError) {
+      setErrors({ email: emailError, password: passwordError });
     } else {
-      setErrors({ password: '' });
+      setErrors({ email: '', password: '' });
       console.log('Form submitted successfully:', { email, password });
       alert('Sign In Successful!');
     }
@@ -110,9 +109,9 @@ function SignIn() {
           </button>
         </form>
         <p className="text-gray-600 text-sm text-center mt-4">
-          Don't have an account?{' '}
-          <a href="/signup" className="text-blue-500 hover:underline">
-            Sign Up
+          Have an account?{' '}
+          <a href="/login" className="text-blue-500 hover:underline">
+            Login
           </a>
         </p>
       </div>
