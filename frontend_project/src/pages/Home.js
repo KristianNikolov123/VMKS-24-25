@@ -1,26 +1,21 @@
 import React from 'react';
 
-const Home = () => {
+function Home() {
   return (
-    <div className="bg-white py-16 sm:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+    <div className="bg-gray-100 min-h-screen">
+      <div className="container mx-auto text-center py-16 px-4">
+        <h1 className="text-5xl font-extrabold text-gray-800 mb-6">
           Welcome to My React & Django Project
         </h1>
-        <p className="mt-4 text-xl text-gray-500">
-          This is the homepage. Explore the app by navigating through the navbar options.
+        <p className="text-lg text-gray-600 mb-8">
+          Explore the app by navigating through the navbar options.
         </p>
-        <div className="mt-8">
-          <a
-            href="#"
-            className="inline-block bg-blue-600 text-white text-lg font-medium py-3 px-6 rounded-full hover:bg-blue-500 transition duration-300"
-          >
-            Learn More
-          </a>
-        </div>
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded transition duration-300">
+          Learn More
+        </button>
       </div>
     </div>
   );
-};
+}
 
 export default Home;
