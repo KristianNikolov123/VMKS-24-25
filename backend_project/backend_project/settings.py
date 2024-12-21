@@ -56,6 +56,8 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 ROOT_URLCONF = 'backend_project.urls'
+APPEND_SLASH = False
+
 
 TEMPLATES = [
     {

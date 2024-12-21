@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate
 # User Registration
 @api_view(['POST'])
 def register(request):
+    print('hello')
     username = request.data.get('username')
     email = request.data.get('email')
     password = request.data.get('password')
