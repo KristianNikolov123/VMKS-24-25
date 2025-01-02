@@ -1,9 +1,10 @@
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from rest_framework.permissions import IsAuthenticated
 
 
 # User Registration
@@ -34,7 +35,15 @@ def login(request):
         return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
+            'username': user.username,  # Add username
             'message': 'Login successful'
         })
     else:
         return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def products(request):
+    user = request.user  # DRF automatically handles authentication
+    return Response({'username': user.username}, status=status.HTTP_200_OK)
